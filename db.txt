@@ -1,0 +1,14 @@
+use eduardo;
+CREATE TABLE posts (
+id int not null auto_increment,
+titulo varchar(100) not null,
+conteudo varchar(200) not null,
+idUser char(16) not null,
+PRIMARY KEY(id),
+foreign key (idUser) references users(id)
+);
+CREATE TABLE users (
+id char(16) primary key not null,
+nome varchar(100) not null,
+senha char(16) not null
+);
