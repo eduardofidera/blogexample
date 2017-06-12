@@ -11,18 +11,18 @@
 			<?php
 				foreach($posts as $post){
 					if($post->id == filter_input(INPUT_GET, 'id')){
-						$titulo = $post->titulo;
-						$conteudo = $post->conteudo;
+						$title = $post->title;
+						$content = $post->content;
 					}
 				}
 			?>
 				<div class="field">
 					<label for="titulo">Título</label>
-					<input type="text" name="titulo" placeholder="Título do post" id="titulo" value="<?php echo $titulo ?>" required>
+					<input type="text" name="title" placeholder="Título do post" id="title" value="<?php echo $title ?>" required>
 				</div>
 				<div class="field">
 					<label for="conteudo">Conteúdo</label>
-					<input type="text" name="conteudo" placeholder="Conteúdo a ser publicado" id="conteudo" value="<?php echo $conteudo ?>" required>
+					<input type="text" name="content" placeholder="Conteúdo a ser publicado" id="content" value="<?php echo $content ?>" required>
 				</div>
 
 				<ul>

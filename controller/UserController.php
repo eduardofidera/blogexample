@@ -1,35 +1,35 @@
 <?php
 class UserController{
-	public function cadastrar(){
+	public function register(){
 		$id = filter_input(INPUT_POST, 'id');
-		$nome = filter_input(INPUT_POST, 'nome');
-		$senha = filter_input(INPUT_POST, 'senha');
+		$name = filter_input(INPUT_POST, 'name');
+		$pass = filter_input(INPUT_POST, 'pass');
 
 		if ($id){ # o formulario foi enviado
 			$a = new User();
 			$a->id = $id;
-			$a->nome = $nome;
-			$a->senha = $senha;
+			$a->name = $name;
+			$a->pass = $pass;
 			$a->save();
 			$a->login();
 		}
-		$view = 'view/User/cadastrar.php';
+		$view = 'view/User/register.php';
 		include 'template/template.php';
 	}
 
-	public function listar(){
-		$users = User::listar();
-		$view = 'view/Post/listar.php';
+	public function list(){
+		$users = User::list();
+		$view = 'view/Post/list.php';
 		include 'template/template.php';
 	}
 
 	public function login(){
 		$id = filter_input(INPUT_POST, 'id');
-		$senha = filter_input(INPUT_POST, 'senha');
+		$pass = filter_input(INPUT_POST, 'pass');
 		if ($id){ # o formulario foi enviado
 			$a = new User();
 			$a->id = $id;
-			$a->senha = $senha;
+			$a->pass = $pass;
 			$a->login();
 		}
 		$view = 'view/User/login.php';
@@ -38,7 +38,7 @@ class UserController{
 
 	public function logout(){
 		session_destroy();
-		header("Location: index.php?c=Post&p=listar");
+		header("Location: index.php?c=Post&p=list");
 
 	}
 }

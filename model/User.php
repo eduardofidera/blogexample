@@ -1,8 +1,8 @@
 <?php
 class User{
 	public $id;
-	public $nome;
-	public $senha;
+	public $name;
+	public $pass;
 	function __construct( ){
 		if( !empty($id) ){
 			$db = new Db();
@@ -12,12 +12,11 @@ class User{
 			$row = $rs->fetch(PDO::FETCH_OBJ);
 			if($row){
 				$this->id = $row->id;
-				$this->nome = $row->nome;
-				$this->senha = $row->senha;
+				$this->name = $row->name;
+				$this->pass = $row->pass;
 			}
 		}
 	}
-
 	public function save(){
 		$db = new Db();
 		$rs = $db->prepare('SELECT * FROM users WHERE id= :id');
@@ -27,32 +26,31 @@ class User{
 		if ($row) {
 			print_r ("Usuário já existe.");
 		} else {
-			$sql = 'INSERT INTO users VALUES (:id, :nome, :senha)';
+			$sql = 'INSERT INTO users VALUES (:id, :name, :pass)';
 			$sth = $db->prepare($sql);
 			$sth->bindParam(':id', $this->id);
-			$sth->bindParam(':nome', $this->nome);
-			$sth->bindParam(':senha', $this->senha);
-			header("Location: index.php?c=Post&p=listar");
+			$sth->bindParam(':name', $this->name);
+			$sth->bindParam(':pass', $this->pass);
+			header("Location: index.php?c=Post&p=list");
 			return $sth->execute();
 		}
 	}
-
 	public function login(){
-			$db = new Db();
-			$id = $this->id;
-			$senha = $this->senha;
-			if ($id) {
-			$rs = $db->prepare('SELECT * FROM users WHERE id= :id AND senha= :senha');
+		$db = new Db();
+		$id = $this->id;
+		$pass = $this->pass;
+		if ($id) {
+			$rs = $db->prepare('SELECT * FROM users WHERE id= :id AND pass= :pass');
 			$rs->bindParam(':id', $id);
-			$rs->bindParam(':senha', $senha);
+			$rs->bindParam(':pass', $pass);
 			$rs->execute();
 			$row = $rs->fetch(PDO::FETCH_OBJ);
 			if ($row) {
 				$_SESSION['login_user']=$row->id;
-				$_SESSION['login_nome']=$row->nome;
-				header("Location: index.php?c=Post&p=listar");
+				$_SESSION['login_name']=$row->name;
+				header("Location: index.php?c=Post&p=list");
 			} else {
-				print_r("Usuario ou senha incorretos.");
+				header("Location: index.php?c=User&p=login");
 			}
 		}
 	}

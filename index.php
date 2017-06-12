@@ -2,6 +2,7 @@
 require 'lib/Db.php';
 require 'model/Post.php';
 require 'model/User.php';
+require 'model/Comment.php';
 session_start();
 #controller de inicio
 $controller = filter_input(INPUT_GET,'c');
@@ -11,7 +12,7 @@ if(!$controller){
 	# página inicial do site
 	require 'controller/PostController.php';
 	$dc = new PostController();
-	$dc->listar();
+	$dc->list();
 }
 else{
 	$controller .= 'Controller';
@@ -20,7 +21,7 @@ else{
 	if ($metodo){
 	$dc->$metodo();
 	} else {
-	header("Location:index.php?c=Post&p=cadastrar");
+	header("Location:index.php?c=Post&p=register");
 	}
 }
 ?>

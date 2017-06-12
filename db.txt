@@ -1,14 +1,23 @@
 use eduardo;
+CREATE TABLE users (
+id char(16) primary key not null,
+name varchar(100) not null,
+pass char(16) not null
+);
 CREATE TABLE posts (
 id int not null auto_increment,
-titulo varchar(100) not null,
-conteudo varchar(200) not null,
+title varchar(100) not null,
+content varchar(200) not null,
 idUser char(16) not null,
 PRIMARY KEY(id),
 foreign key (idUser) references users(id)
 );
-CREATE TABLE users (
-id char(16) primary key not null,
-nome varchar(100) not null,
-senha char(16) not null
+CREATE TABLE comments (
+id int not null auto_increment,
+content varchar(200) not null,
+idUser char(16) not null,
+idPost int not null,
+PRIMARY KEY (id),
+foreign key(idUser) references users(id),
+foreign key(idPost) references posts(id)
 );

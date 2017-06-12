@@ -1,6 +1,6 @@
 <?php
 	if (empty($_SESSION['login_user'])){
-	header("Location: index.php?c=Post&p=listar");
+	header("Location: index.php?c=Post&p=list");
 	}
 ?>
 <section class="wrapper style4 container">
@@ -10,11 +10,11 @@
 			<form name="editar" method="post">
 				<div class="field">
 					<label for="titulo">Título</label>
-					<input type="text" name="titulo" placeholder="Título do post" id="titulo" required>
+					<input type="text" name="title" placeholder="Título do post" id="title" required>
 				</div>
 				<div class="field">
 					<label for="conteudo">Conteúdo</label>
-					<input type="text" name="conteudo" placeholder="Conteúdo a ser publicado" id="conteudo" required>
+					<input type="text" name="content" placeholder="Conteúdo a ser publicado" id="content" required>
 				</div>
 
 				<ul>

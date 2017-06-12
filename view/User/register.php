@@ -10,11 +10,11 @@
 				</div>
 				<div class="field">
 					<label for="nome">Nome</label>
-					<input type="text" name="nome" id="nome" placeholder="Seu nome" required>
+					<input type="text" name="name" id="name" placeholder="Seu nome" required>
 				</div>
 				<div class="field">
 					<label for="senha">Senha</label>
-					<input type="password" name="senha" id="senha" placeholder="Senha" required>
+					<input type="password" name="pass" id="pass" placeholder="Senha" required>
 				</div>
 
 				<ul class="buttons">
