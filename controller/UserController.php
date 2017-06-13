@@ -6,7 +6,7 @@ class UserController{
 		$pass = filter_input(INPUT_POST, 'pass');
 
 		if ($id){ # o formulario foi enviado
-			$a = new User();
+			$a = new User(); // a = instância do objeto
 			$a->id = $id;
 			$a->name = $name;
 			$a->pass = $pass;

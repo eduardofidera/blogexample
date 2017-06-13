@@ -6,7 +6,7 @@ class PostController{
 
 		if ($title){
 			# o formulario foi enviado
-			$a = new Post();
+			$a = new Post(); // a = instância do objeto
 			$a->title = $title;
 			$a->content = $content;
 			$a->idUser = $_SESSION['login_user'];

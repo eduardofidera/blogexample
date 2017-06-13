@@ -4,7 +4,7 @@ class Comment{
 	public $content;
 	public $idUser;
 	public $idPost;
-	function __construct( $id = NULL ){
+	function __construct( $id = NULL ){ //construção do objeto
 		if( !empty($id) ){
 			$db = new Db();
 			$rs = $db->prepare('SELECT * FROM comments WHERE id = :id');
@@ -40,11 +40,11 @@ class Comment{
 		$db = new Db();
 		$idPost = filter_input(INPUT_GET, 'idPost');
 		if ($idPost){
-			$rs = $db->query ('SELECT * FROM comments WHERE idPost = '.$idPost);
+			$rs = $db->query ('SELECT * FROM comments WHERE idPost = '.$idPost); // rs = result set da query no db
 			$comments = $rs->fetchAll(PDO::FETCH_CLASS, 'Comment');
 			return $comments;
 		}else {
-			$rs = $db->query('SELECT * FROM comments');
+			$rs = $db->query('SELECT * FROM comments'); // rs = result set da query no db
 			$comments = $rs->fetchAll(PDO::FETCH_CLASS, 'Comment');
 			return $comments;
 		}

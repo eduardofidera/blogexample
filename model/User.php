@@ -3,10 +3,10 @@ class User{
 	public $id;
 	public $name;
 	public $pass;
-	function __construct( ){
+	function __construct( ){//construção do objeto
 		if( !empty($id) ){
 			$db = new Db();
-			$rs = $db->prepare('SELECT * FROM users WHERE id = :id');
+			$rs = $db->prepare('SELECT * FROM users WHERE id = :id'); // rs = result set da query no db
 			$rs->bindParam(':id', $id);
 			$rs->execute();
 			$row = $rs->fetch(PDO::FETCH_OBJ);
@@ -19,7 +19,7 @@ class User{
 	}
 	public function save(){
 		$db = new Db();
-		$rs = $db->prepare('SELECT * FROM users WHERE id= :id');
+		$rs = $db->prepare('SELECT * FROM users WHERE id= :id'); // rs = result set da query no db
 		$rs->bindParam(':id', $this->id);
 		$rs->execute();
 		$row = $rs->fetch(PDO::FETCH_OBJ);

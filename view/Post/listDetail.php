@@ -34,7 +34,7 @@
 				echo "<div style='border-bottom: 1px solid #83d3c9;'><h2>Comentários</h2></div>";
 				foreach ($comments as $comment){
 					echo "<div class='comentario'>";
-					echo "<h1 style='display:inline-block;word-wrap: break-word;width:100%;'> $comment->content <h2 style='font-size:14px;color: #83d3c9; display:inline-block;'>comentário por: $comment->idUser</h2></h1>";
+					echo "<h1 style='display:inline-block;word-wrap: break-word;width:100%; font-size:16px;'> $comment->content <h2 style='font-size:14px;color: #83d3c9; display:inline-block;'>comentário por: $comment->idUser</h2></h1>";
 					if ((!empty($_SESSION['login_user'])) && ($comment->idUser == $_SESSION['login_user'])) {
 							echo "<a href='index.php?c=Comment&p=delete&id=$comment->id&idPost=$comment->idPost' class='editarPost'><img src='../../images/delete.png' alt='Delete' width='22px'></a>";
 						}

@@ -5,7 +5,7 @@ class CommentController{
 		$idPost = filter_input(INPUT_GET, 'idPost');
 		if ($content){
 			# o formulario foi enviado
-			$a = new Comment();
+			$a = new Comment(); // a = instância do objeto
 			$a->content = $content;
 			$a->idUser = $_SESSION['login_user'];
 			$a->idPost = filter_input(INPUT_GET, 'idPost');

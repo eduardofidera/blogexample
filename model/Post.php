@@ -4,10 +4,10 @@ class Post{
 	public $title;
 	public $content;
 	public $idUser;
-	function __construct( $id = NULL ){
+	function __construct( $id = NULL ){//construção do objeto
 		if( !empty($id) ){
 			$db = new Db();
-			$rs = $db->prepare('SELECT * FROM markers WHERE id = :id');
+			$rs = $db->prepare('SELECT * FROM markers WHERE id = :id'); // rs = result set da query no db
 			$rs->bindParam(':id', $id);
 			$rs->execute();
 			$row = $rs->fetch(PDO::FETCH_OBJ);
@@ -45,11 +45,11 @@ class Post{
 		$db = new Db();
 		$idPost = filter_input(INPUT_GET, 'idPost');
 		if ($idPost){
-			$rs = $db->query ('SELECT * FROM posts WHERE id = '.$idPost);
+			$rs = $db->query ('SELECT * FROM posts WHERE id = '.$idPost); // rs = result set da query no db
 			$posts = $rs->fetchAll(PDO::FETCH_CLASS, 'Post');
 			return $posts;
 		}else {
-			$rs = $db->query('SELECT * FROM posts');
+			$rs = $db->query('SELECT * FROM posts'); // rs = result set da query no db
 			$posts = $rs->fetchAll(PDO::FETCH_CLASS, 'Post');
 			return $posts;
 		}
